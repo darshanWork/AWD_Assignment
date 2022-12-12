@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
+/* BODY STYLING: FONT, PADDING AND BACKGROUND */
+body {
+    font-family: Arial, serif;
+    padding: 10px;
+    background: #ffffff;
+}
+
+.login-form {
+    width: 50%;
+    text-align: center;
+    background-color: #a9a9a9;
+    margin: auto;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
+form {
+    margin: auto;
+    padding-top: 10%;
+    padding-bottom: 10%;
+}

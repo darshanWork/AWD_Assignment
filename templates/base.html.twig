@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+{# HEADER OF WEBSITE - STORE METADATA, WEBSITE TITLE, CSS & JS FILES #}
+<head>
+    {# METADATA, TITLE & WEBSITE ICON #}
+    <meta charset="UTF-8">
+    <title>Music Review{% block title %}{% endblock %}</title>
+    <link rel="icon" href="{{ asset('images/website-image.png') }}">
+    {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+
+    {# STYLESHEETS #}
+    <link rel="stylesheet" href="{{ asset('css/main-stylesheet.css') }}">
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+    {# JAVASCRIPT #}
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</head>
+
+{# BODY OF WEBSITE - STORES CONTENT #}
+<body>
+
+{# HEADING OF SPECIFIC WEBPAGE #}
+<div class="header">
+    <h1>{{ heading }}</h1>
+    <h3>{{ subheading }}</h3>
+</div>
+
+{# NAVIGATION #}
+<div class="navigation">
+    <a href="/view/reviews">Reviews</a>
+    <a href="/{{ app.user ? 'album/create' : 'login' }}">Create Album</a>
+    <a href="/{{ app.user ? 'review/edit' : 'login' }}">Add/Edit Review</a>
+    <a href="/{{ app.user ? 'profile' : 'login' }}">
+        <strong>
+            {{ app.user ? app.user.email : 'Anonymous User' }}
+        </strong>
+    </a>
+    <a href="/{{ app.user ? 'logout' : 'login' }}">
+        {{ app.user ? 'Logout' : 'Login' }}
+    </a>
+    <form id="search-form">
+        <input type="search" id="user-search" placeholder="Search for artists/albums..." />
+        <button>Search</button>
+    </form>
+</div>
+
+{# MAIN CONTENT OF WEBSITE #}
+<div class="main-content">
+    <!-- ADD SPECIFIC CONTENT FOR EACH INDIVIDUAL WEBPAGE -->
+    {% block body %}{% endblock %}
+</div>
+
+{# FOOTER #}
+<div class="footer">
+    <p>Developer's credentials: @0584933 | AGE377</p>
+    <p>Latest update: {{ datetime }}</p>
+</div>
+</body>
+
+</html>

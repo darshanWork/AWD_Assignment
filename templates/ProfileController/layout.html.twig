@@ -1,0 +1,10 @@
+{# template for create review page of website #}
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {# VIEW PROFILE #}
+    <h1>Profile</h1>
+    <p>Email: {{ app.user.email }}</p>
+    <p>Roles: {{ app.user.roles[0] }}</p>
+    <h1>Edit Profile</h1>
+{% endblock %}

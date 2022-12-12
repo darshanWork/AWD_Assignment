@@ -1,0 +1,12 @@
+{# template for create review page of website #}
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/create-review.css') }}">
+{% endblock %}
+
+{% block body %}
+    {# CREATE NEW ALBUM #}
+    <h1>Create Album</h1>
+    {{ form(albumForm) }}
+{% endblock %}

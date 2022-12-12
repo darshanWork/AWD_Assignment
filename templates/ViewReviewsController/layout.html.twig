@@ -1,0 +1,41 @@
+{# template for view reviews page of website #}
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {# VIEWS REVIEW #}
+    <h1>Reviews</h1>
+    {# REVIEWS #}
+    <table>
+        <thead>
+        <tr>
+            <td>Title</td>
+            <td>Artist</td>
+            <td>Genre</td>
+            <td>Reviewer</td>
+            <td>Review</td>
+            <td>Rating</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% if reviews %}
+            {% for review in reviews %}
+                <tr>
+                    {% for album in albums %}
+                        {% if album.id == review.album_id_id %}
+                            <td>{{ album.title }}</td>
+                            <td>{{ album.artist }}</td>
+                            <td>{{ album.genre }}</td>
+                        {% endif %}
+                    {% endfor %}
+                    {% for user in users %}
+                        {% if user.id == review.user_id_id %}
+                            <td>{{ user.email }}</td>
+                        {% endif %}
+                    {% endfor %}
+                    <td>{{ review.review_text }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+{% endblock %}
