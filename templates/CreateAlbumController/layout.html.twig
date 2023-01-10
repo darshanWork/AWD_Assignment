@@ -5,8 +5,28 @@
     <link rel="stylesheet" href="{{ asset('css/create-review.css') }}">
 {% endblock %}
 
+{% block javascripts %}
+    <script src=
+            "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+    </script>
+    <script src="{{ asset('js/add-collection-widget.js') }}"></script>
+{% endblock %}
+
 {% block body %}
     {# CREATE NEW ALBUM #}
     <h1>Create Album</h1>
-    {{ form(albumForm) }}
+    {{ form_start(albumForm) }}
+    {{ form_widget(albumForm.title) }}
+    {{ form_widget(albumForm.artist) }}
+    {{ form_widget(albumForm.genre) }}
+    <ul id="track_list"
+    data-prototype="{{ form_widget(albumForm.track_list.vars.prototype)|e }}"
+    data-widget-tags="{{ '<li></li>'|e }}"
+    data-widget-counter="{{ albumForm.track_list|length }}">
+        {{ form_row(albumForm.track_list) }}
+    </ul>
+    <button type="button"
+            class="add-another-collection-widget"
+            data-list-selector="#track_list">Add another track</button>
+    {{ form_end(albumForm) }}
 {% endblock %}

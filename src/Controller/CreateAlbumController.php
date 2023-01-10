@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Album;
-use App\Form\AlbumType;
+use App\Form\AlbumFormType;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,9 +17,10 @@ class CreateAlbumController extends AbstractController
         //"DateTimeImmutable" variable for latest update of website
         $dateTime = new DateTimeImmutable();
         $album = new Album();
+        $track_list = [];
         $entityManager = $doctrine->getManager();
 
-        $albumForm = $this->createForm(AlbumType::class, $album);
+        $albumForm = $this->createForm(AlbumFormType::class, $album);
         $albumForm->handleRequest($request);
         if($albumForm->isSubmitted() && $albumForm->isValid())
         {
@@ -29,7 +30,6 @@ class CreateAlbumController extends AbstractController
             $entityManager->flush();
 
             return $this->redirectToRoute('homepage');
-
         }
 
         return $this->render('CreateAlbumController/layout.html.twig', ['heading' => 'Music Review: Create Review', 'subheading' =>

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AlbumRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\JsonType;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -25,8 +26,8 @@ class Album
     #[ORM\Column(length: 255)]
     private ?string $genre = null;
 
-    #[ORM\Column(length: 1024)]
-    private ?string $track_list = null;
+    #[ORM\Column]
+    private ?array $track_list = [];
 
     #[ORM\OneToMany(mappedBy: 'album_id', targetEntity: Review::class)]
     private Collection $review_id;
@@ -77,12 +78,12 @@ class Album
         return $this;
     }
 
-    public function getTrackList(): ?string
+    public function getTrackList(): ?array
     {
         return $this->track_list;
     }
 
-    public function setTrackList(string $track_list): self
+    public function setTrackList(array $track_list): self
     {
         $this->track_list = $track_list;
 
