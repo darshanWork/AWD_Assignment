@@ -10,9 +10,9 @@ create-album:
     path: /album/create
     controller: App\Controller\CreateAlbumController::createAlbum
 
-edit-review:
-    path: /review/edit
-    controller: App\Controller\EditReviewController::editReview
+add-review:
+    path: /review/add
+    controller: App\Controller\AddReviewController::addReview
 
 view_reviews:
     path: /view/reviews
@@ -21,6 +21,10 @@ view_reviews:
 profile:
     path: /profile
     controller: App\Controller\ProfileController::profile
+
+edit-review:
+    path: /review/edit/{id}
+    controller: App\Controller\EditReviewController::editReview
 
 kernel:
     resource: ../src/Kernel.php

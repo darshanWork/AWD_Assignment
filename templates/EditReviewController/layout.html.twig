@@ -2,25 +2,9 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    {# ADD NEW REVIEW #}
-    <h1>Existing Albums</h1>
-    {% for album in albums %}
-        <h3>{{ album.id }}</h3>
-        <strong>Title: </strong>{{ album.title }}
-        <strong>Artist: </strong>{{ album.artist }}
-        <strong>Genre: </strong>{{ album.genre }}
-    {% endfor %}
-    <h1>Add New Review to Existing Album</h1>
-    {# NEW REVIEW FORM #}
-    {{ form(reviewForm) }}
-    <h1>Existing Reviews</h1>
-    {% for review in reviews %}
-        <h3>{{ review.id }}</h3>
-        <strong>Album ID: </strong>{{ review.album_id }}
-        <strong>User ID: </strong>{{ review.user_id }}
-        <strong>Review Text: </strong>{{ review.review_text }}
-    {% endfor %}
-    <h1>Edit Existing Review</h1>
+    {# EDIT REVIEW #}
+    <h1>Edit Review</h1>
     {# EDIT REVIEW FORM #}
-    {{ form(editReviewForm) }}
+    {{ form_start(form) }}
+    {{ form_end(form) }}
 {% endblock %}

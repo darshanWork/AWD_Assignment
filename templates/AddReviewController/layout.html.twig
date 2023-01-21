@@ -1,0 +1,13 @@
+{# template for add review page of website #}
+{% extends "base.html.twig" %}
+
+{% block body %}
+    {# ADD NEW REVIEW #}
+    <h1>Add Review</h1>
+    {# NEW REVIEW FORM #}
+    {{ form_start(reviewForm) }}
+    {{ form_widget(reviewForm.user_id) }}
+    {{ form_widget(reviewForm.album_id) }}
+    {{ form_widget(reviewForm.review_text) }}
+    {{ form_end(reviewForm) }}
+{% endblock %}

@@ -34,7 +34,7 @@
 <div class="navigation">
     <a href="/view/reviews">Reviews</a>
     <a href="/{{ app.user ? 'album/create' : 'login' }}">Create Album</a>
-    <a href="/{{ app.user ? 'review/edit' : 'login' }}">Add/Edit Review</a>
+    <a href="/{{ app.user ? 'review/add' : 'login' }}">Add Review</a>
     <a href="/{{ app.user ? 'profile' : 'login' }}">
         <strong>
             {{ app.user ? app.user.email : 'Anonymous User' }}

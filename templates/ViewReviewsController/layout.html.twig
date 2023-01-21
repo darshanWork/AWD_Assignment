@@ -21,18 +21,22 @@
             {% for review in reviews %}
                 <tr>
                     {% for album in albums %}
-                        {% if album.id == review.album_id_id %}
+                        {% if album.id == review.getAlbumId().id %}
                             <td>{{ album.title }}</td>
                             <td>{{ album.artist }}</td>
                             <td>{{ album.genre }}</td>
                         {% endif %}
                     {% endfor %}
                     {% for user in users %}
-                        {% if user.id == review.user_id_id %}
+                        {% if user.id == review.getUserId().id %}
                             <td>{{ user.email }}</td>
                         {% endif %}
                     {% endfor %}
-                    <td>{{ review.review_text }}</td>
+                    <td>{{ review.getReviewText() }}</td>
+                    <td>***RATING***</td>
+                    {% if app.user and review.getUserId().id == app.user.id %}
+                        <td><a href="/review/edit/{{ review.id }}"><button>EDIT</button></a></td>
+                    {% endif %}
                 </tr>
             {% endfor %}
         {% endif %}
